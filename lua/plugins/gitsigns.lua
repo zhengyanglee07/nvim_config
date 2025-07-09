@@ -5,17 +5,24 @@ return {
   config = function()
     require("gitsigns").setup {
       current_line_blame = true,
-      numhl = false,
+      signcolumn = true,
+      numhl = true,
+      linehl = true,
+      show_deleted = true,
+      word_diff = true,
+      watch_gitdir = {
+        follow_files = true,
+      },
       signs = {
         add = { text = "▎" },
         change = { text = "▎" },
         delete = { text = "" },
         topdelete = { text = "‾" },
+
         changedelete = { text = "~" },
         untracked = { text = "┆" },
       },
       signs_staged = {
-        add = { text = "▎" },
         change = { text = "▎" },
         delete = { text = "" },
         topdelete = { text = "‾" },
@@ -61,9 +68,20 @@ return {
       map("n", "<leader>GB", function() gs.blame() end, "Blame Buffer")
       map("n", "<leader>Gd", gs.diffthis, "Diff This")
       map("n", "<leader>GD", function() gs.diffthis("~") end, "Diff This ~")
-	  map("n", "<leader>Gt", "<cmd>Gitsigns toggle_deleted<CR>", "Toggle Deleted")
+	    map("n", "<leader>Gt", "<cmd>Gitsigns toggle_deleted<CR>", "Toggle Deleted")
       map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
       end,
     }
+    vim.cmd [[
+        highlight GitSignsAddNr guifg=#2ECC40
+        highlight GitSignsChangeNr guifg=#FFB90F
+        highlight GitSignsDeleteNr guifg=#FF4136
+        highlight GitSignsAddLn guibg=#1A472A
+        highlight GitSignsChangeLn guibg=#2B4D3B
+        highlight GitSignsDeleteLn guibg=#4A1B1B
+        highlight GitSignsAdd guifg=#2ECC40
+        highlight GitSignsChange guifg=#FFB90F
+        highlight GitSignsDelete guifg=#FF4136
+    ]]
   end,
 }

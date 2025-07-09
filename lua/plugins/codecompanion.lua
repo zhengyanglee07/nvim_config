@@ -2,20 +2,14 @@
 return {
   {
     "olimorris/codecompanion.nvim",
-    -- event = "VeryLazy",
+    event = "VeryLazy",
     cmd = { "CodeCompanion", "CodeCompanionChat" },
     config = function()
       require("codecompanion").setup {
         display = {
-          terminal = {
-            create_if_not_exists = true, -- Auto-create terminal if none exists
-            position = "bottom", -- or "top", "left", "right"
-            size = 10, -- Size of the terminal window
-          },
           chat = {
-            -- Change the default icons
             icons = {
-              pinned_buffer = " ",
+              pinned_buffer = " ",
               watched_buffer = "👀 ",
             },
           },
@@ -32,9 +26,14 @@ return {
           diff = {
             enabled = true,
             close_chat_at = 240,
-            layout = "vertical",
-            opts = { "internal", "filler", "closeoff", "algorithm:patience", "followwrap", "linematch:120" },
-            provider = "default",
+            layout = "vertical", -- or "horizontal"
+            provider = "mini_diff", -- Use mini.diff instead of default
+            opts = {
+              -- Mini.diff specific options
+              algorithm = "histogram",
+              indent_heuristic = true,
+              linematch = 60,
+            },
           },
         },
         strategies = {
@@ -64,6 +63,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
+      "echasnovski/mini.diff", -- Add mini.diff as dependency
     },
     init = function()
       require("configs.codecompanion.fidget-spinner"):init()
@@ -71,3 +71,4 @@ return {
     end,
   },
 }
+

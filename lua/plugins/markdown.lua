@@ -1,7 +1,7 @@
 return {
   {
     "OXY2DEV/markview.nvim",
-    event = "BufRead",
+    event = "VeryLazy",
     -- cmd = { "Markview" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -15,20 +15,20 @@ return {
         },
       }
 
-      vim.api.nvim_create_autocmd("BufWinEnter", {
-        pattern = "*",
-        callback = function()
-          local bufname = vim.api.nvim_buf_get_name(0)
-          if bufname:match "CodeCompanion" then
-            vim.bo.filetype = "codecompanion"
-            vim.bo.buftype = "" -- override nofile
-            vim.bo.modifiable = true
-          end
-        end,
-      })
+      -- vim.api.nvim_create_autocmd("BufWinEnter", {
+      --   pattern = "*",
+      --   callback = function()
+      --     local bufname = vim.api.nvim_buf_get_name(0)
+      --     if bufname:match "CodeCompanion" then
+      --       vim.bo.filetype = "codecompanion"
+      --       vim.bo.buftype = "" -- override nofile
+      --       vim.bo.modifiable = true
+      --     end
+      --   end,
+      -- })
 
       -- Optional: keymap to toggle the preview
-      vim.keymap.set("n", "<leader>mp", "<cmd>Markview<CR>", { desc = "Toggle MarkView preview" })
+      -- vim.keymap.set("n", "<leader>mp", "<cmd>Markview<CR>", { desc = "Toggle MarkView preview" })
     end,
   },
   {

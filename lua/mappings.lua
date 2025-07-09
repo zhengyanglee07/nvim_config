@@ -43,4 +43,4 @@ map("v", "<leader>ai", "<cmd>CodeCompanion<CR>", { desc = "CodeCompanion Inline"
 -- vim.keymap.set("n", "<leader>mp", function()
 --   require("markview").toggle()
 -- end, { desc = "Toggle MarkView preview" })
--- map("n", "<leader>mp", "<cmd>MarkViewToggle<CR>", { desc = "Toggle MarkView preview" })
+map("n", "<leader>mp", "<cmd>Markview<CR>", { desc = "Toggle MarkView preview" })
