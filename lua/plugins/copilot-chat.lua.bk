@@ -1,0 +1,53 @@
+return {
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      "github/copilot.vim",
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      debug = false, -- Enable debugging
+      -- Window settings
+      window = {
+        layout = "float", -- 'float' | 'split' | 'vsplit'
+        relative = "cursor", -- 'editor' | 'cursor'
+        border = "rounded",
+        width = 0.8, -- fractional width of parent
+        height = 0.8, -- fractional height of parent
+      },
+      -- Copilot Chat panel behavior
+      auto_follow_cursor = false, -- Follow cursor in chat window
+      context = "buffer", -- 'buffer' | 'selection'
+      -- Server configuration
+      server = {
+        host = "127.0.0.1",
+        port = 9527,
+      },
+    },
+    keys = {
+      {
+        "<leader>cc",
+        function()
+          require("CopilotChat").toggle()
+        end,
+        desc = "Toggle Copilot Chat",
+      },
+      {
+        "<leader>ce",
+        function()
+          require("CopilotChat").explain()
+        end,
+        desc = "Explain code",
+        mode = { "n", "v" },
+      },
+      {
+        "<leader>ct",
+        function()
+          require("CopilotChat").tests()
+        end,
+        desc = "Generate tests",
+        mode = { "n", "v" },
+      },
+    },
+  },
+}
