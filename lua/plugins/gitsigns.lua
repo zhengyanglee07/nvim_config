@@ -8,18 +8,22 @@ return {
       signcolumn = true,
       numhl = true,
       linehl = true,
-      show_deleted = true,
+      show_deleted = false,
       word_diff = true,
+      diff_opts = {
+        internal = true,
+        algorithm = "minimal",
+        indent_heuristic = true,
+      },
       watch_gitdir = {
         follow_files = true,
       },
       signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "" },
-        topdelete = { text = "‾" },
-
-        changedelete = { text = "~" },
+        add = { text = "▎", hl = "GitSignsAdd", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+        change = { text = "▎", hl = "GitSignsChange", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+        delete = { text = "", hl = "GitSignsDelete", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+        topdelete = { text = "‾", hl = "GitSignsDelete", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+        changedelete = { text = "~", hl = "GitSignsChange", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
         untracked = { text = "┆" },
       },
       signs_staged = {
@@ -73,15 +77,18 @@ return {
       end,
     }
     vim.cmd [[
-        highlight GitSignsAddNr guifg=#2ECC40
-        highlight GitSignsChangeNr guifg=#FFB90F
-        highlight GitSignsDeleteNr guifg=#FF4136
-        highlight GitSignsAddLn guibg=#1A472A
-        highlight GitSignsChangeLn guibg=#2B4D3B
-        highlight GitSignsDeleteLn guibg=#4A1B1B
-        highlight GitSignsAdd guifg=#2ECC40
-        highlight GitSignsChange guifg=#FFB90F
-        highlight GitSignsDelete guifg=#FF4136
+          highlight GitSignsAddNr guifg=#2ECC40
+          highlight GitSignsChangeNr guifg=#FFB90F
+          highlight GitSignsDeleteNr guifg=#FF4136
+          highlight GitSignsAddLn guifg=#2ECC40
+          highlight GitSignsChangeLn guifg=#FFB90F
+          highlight GitSignsDeleteLn guibg=#FF4136 guifg=#000000
+          highlight GitSignsAddInline guifg=#2ECC40 gui=bold
+          highlight GitSignsChangeInline guifg=#FFB90F gui=bold
+          highlight GitSignsDeleteInline guibg=#FF4136 guifg=#000000
+          highlight GitSignsAdd guifg=#2ECC40 gui=bold
+          highlight GitSignsChange guifg=#FFB90F gui=bold
+          highlight GitSignsDelete guifg=#FF4136 gui=bold
     ]]
   end,
 }
