@@ -2,7 +2,7 @@
 
 A modern, feature-rich Neovim configuration built on top of NvChad with AI-powered coding assistance, Flutter development support, and enhanced markdown editing capabilities.
 
-![Preview]([https://github.com/user-attachments/assets/a5052b3a-dc4a-4876-86a3-0c9bc8b41a22])
+<img width="2540" height="989" alt="Screenshot 2025-10-13 230609" src="https://github.com/user-attachments/assets/526ac14e-b568-4a56-921a-17cd9509ba96" />
 
 ## ✨ Features
 
