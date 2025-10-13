@@ -1,7 +1,7 @@
 return {
   "lewis6991/gitsigns.nvim",
   event = "VeryLazy",
-  enabled = true,
+  enabled = false,
   config = function()
     require("gitsigns").setup {
       current_line_blame = true,
@@ -72,7 +72,8 @@ return {
       map("n", "<leader>GB", function() gs.blame() end, "Blame Buffer")
       map("n", "<leader>Gd", gs.diffthis, "Diff This")
       map("n", "<leader>GD", function() gs.diffthis("~") end, "Diff This ~")
-	    map("n", "<leader>Gt", "<cmd>Gitsigns toggle_deleted<CR>", "Toggle Deleted")
+	    -- map("n", "<leader>Gt", "<cmd>Gitsigns toggle_deleted<CR>", "Toggle Deleted")
+      map("n", "<leader>Gts", "<cmd>Gitsigns toggle_signs<CR>", "Toggle Signs")
       map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
       end,
     }

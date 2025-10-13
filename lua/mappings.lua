@@ -44,3 +44,15 @@ map("v", "<leader>ai", "<cmd>CodeCompanion<CR>", { desc = "CodeCompanion Inline"
 --   require("markview").toggle()
 -- end, { desc = "Toggle MarkView preview" })
 map("n", "<leader>mp", "<cmd>Markview<CR>", { desc = "Toggle MarkView preview" })
+
+-- Flutter keymaps
+map("n", "<leader>fr", "<cmd>FlutterRun<CR>", { desc = "Flutter Run" })
+map("n", "<leader>fq", "<cmd>FlutterQuit<CR>", { desc = "Flutter Quit" })
+map("n", "<leader>fd", "<cmd>FlutterDevices<CR>", { desc = "Flutter Devices" })
+map("n", "<leader>fe", "<cmd>FlutterEmulators<CR>", { desc = "Flutter Emulators" })
+map("n", "<leader>fR", "<cmd>FlutterReload<CR>", { desc = "Flutter Hot Reload" })
+map("n", "<leader>fs", "<cmd>FlutterRestart<CR>", { desc = "Flutter Hot Restart" })
+map("n", "<leader>fD", "<cmd>FlutterDevTools<CR>", { desc = "Flutter DevTools" })
+map("n", "<leader>fl", "<cmd>FlutterLspRestart<CR>", { desc = "Flutter LSP Restart" })
+map("n", "<leader>fo", "<cmd>FlutterOutlineToggle<CR>", { desc = "Flutter Outline" })
+map("n", "<leader>fp", "<cmd>FlutterPubGet<CR>", { desc = "Flutter Pub Get" })
