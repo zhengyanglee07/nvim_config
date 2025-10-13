@@ -32,9 +32,10 @@ local options = {
     graphql = { "prettier" },
     python = { "black" },
     vue = { "prettier" },
+    dart = { "dart_format" },
 
     -- -- Conform will run the first available formatter
-    -- javascript = { "prettierd", "prettier", stop_after_first = true },
+    -- javascript = { { "prettierd", "prettier" } },
   },
 
   -- format_on_save = {
