@@ -18,7 +18,7 @@ local servers = {
   "cmake",
   "terraformls",
   "vimls",
-  "volar",
+  -- "volar", // deprecated use vue_ls instead
 }
 local nvlsp = require "nvchad.configs.lspconfig"
 

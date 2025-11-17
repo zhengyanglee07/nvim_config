@@ -35,7 +35,7 @@ local simple_servers = {
   "cmake",
   "terraformls",
   "vimls",
-  "volar",
+  "vue_ls",
 }
 
 -- Configure and enable simple servers
