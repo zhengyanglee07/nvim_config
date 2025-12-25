@@ -32,10 +32,44 @@ return {
     end,
   },
   {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = "cd app && npm install",
+    config = function()
+      vim.g.mkdp_auto_start = 0
+      vim.g.mkdp_auto_close = 1
+      vim.g.mkdp_refresh_slow = 0
+      vim.g.mkdp_command_for_global = 0
+      vim.g.mkdp_open_to_the_world = 0
+      vim.g.mkdp_browser = ""
+      vim.g.mkdp_echo_preview_url = 1
+      vim.g.mkdp_port = "8394"
+      vim.g.mkdp_preview_options = {
+        mkit = {},
+        katex = {},
+        uml = {},
+        maid = {},
+        disable_sync_scroll = 0,
+        sync_scroll_type = "middle",
+        hide_yaml_meta = 1,
+        sequence_diagrams = {},
+        flowchart_diagrams = {},
+        content_editable = false,
+        disable_filename = 0,
+        toc = {},
+      }
+
+      vim.keymap.set("n", "<leader>mo", "<cmd>MarkdownPreview<CR>", { desc = "Markdown Preview" })
+      vim.keymap.set("n", "<leader>ms", "<cmd>MarkdownPreviewStop<CR>", { desc = "Markdown Preview Stop" })
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
         mpls = {},
+        marksman = {},
       },
       setup = {
         mpls = function(_, opts)
@@ -64,6 +98,18 @@ live preview of markdown files in your browser while you edit them in your favor
           end
 
           lspconfig.mpls.setup(opts)
+        end,
+        marksman = function(_, opts)
+          local lspconfig = require "lspconfig"
+          local nvlsp = require "nvchad.configs.lspconfig"
+
+          lspconfig.marksman.setup {
+            on_attach = nvlsp.on_attach,
+            on_init = nvlsp.on_init,
+            capabilities = nvlsp.capabilities,
+            filetypes = { "markdown", "markdown.pandoc" },
+            root_dir = lspconfig.util.root_pattern(".git", ".marksman.toml"),
+          }
         end,
       },
     },
